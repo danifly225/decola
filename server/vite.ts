@@ -68,7 +68,8 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "public");
+  // Changement ici : pointer vers ../dist/public au lieu de ./public
+  const distPath = path.resolve(import.meta.dirname, "..", "dist", "public");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
