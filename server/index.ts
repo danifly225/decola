@@ -47,20 +47,26 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
+  // Setup vite en développement, servir statique en production
+  if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // CORRECTION: Utiliser localhost au lieu de 0.0.0.0 sur Windows
+  // Configuration du port et host pour Render
   const port = parseInt(process.env.PORT || '5000', 10);
   
-  // Simple: toujours utiliser localhost (fonctionne sur Windows et Unix)
-  server.listen(port, 'localhost', () => {
-    log(`🚀 Serveur démarré sur http://localhost:${port}`);
-  });
+  // Adaptation pour l'environnement de déploiement
+  if (process.env.NODE_ENV === 'production') {
+    // Sur Render, écouter sur 0.0.0.0 (toutes les interfaces)
+    server.listen(port, '0.0.0.0', () => {
+      log(`🚀 Serveur démarré sur http://0.0.0.0:${port}`);
+    });
+  } else {
+    // En local, garder localhost pour compatibilité Windows
+    server.listen(port, 'localhost', () => {
+      log(`🚀 Serveur démarré sur http://localhost:${port}`);
+    });
+  }
 })();
