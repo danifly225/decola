@@ -1,0 +1,133 @@
+# Prompt pour Replit - Site Web Decola Africa
+
+## Instructions générales
+Créer un site web moderne et élégant pour "Decola Africa", une entreprise artisanale africaine spécialisée dans la fabrication de produits décoratifs en terre cuite fabriqués localement.
+
+## Structure du site demandée
+
+### Technologies à utiliser :
+- HTML5, CSS3, JavaScript vanilla
+- Design responsive (mobile-first)
+- Framework CSS moderne (Tailwind CSS ou Bootstrap)
+- Animations CSS fluides
+- Structure de fichiers propre et organisée
+
+### Pages principales :
+1. **Accueil** (index.html)
+2. **Nos Produits** (products.html)
+3. **À Propos** (about.html)
+4. **Galerie** (gallery.html)
+5. **Contact** (contact.html)
+
+## Contenu et fonctionnalités
+
+### Page d'accueil :
+- Hero section avec image de fond (produits en terre cuite)
+- Titre accrocheur : "DECOLA AFRICA - Artisanat Africain en Terre Cuite"
+- Sous-titre : "Produits décoratifs authentiques fabriqués localement en Afrique"
+- Section "Nos spécialités" avec 3 cartes :
+  * Claustras décoratifs
+  * Vasques de douche
+  * Accessoires de décoration
+- Section témoignages clients
+- Appel à l'action vers la page produits
+
+### Page Produits :
+- 3 catégories principales avec images et descriptions :
+  * **Claustras** : "Séparateurs d'espace élégants en terre cuite, parfaits pour créer de l'intimité tout en laissant passer la lumière"
+  * **Vasques de douche** : "Vasques artisanales uniques, alliant fonctionnalité et esthétique africaine authentique"
+  * **Accessoires déco** : "Vases, pots, sculptures et objets décoratifs pour sublimer vos espaces"
+- Filtres par catégorie
+- Galerie d'images avec effet hover
+- Bouton "Demander un devis" sur chaque produit
+
+### Page À Propos :
+- Histoire de l'entreprise et vision
+- Processus de fabrication artisanale
+- Engagement pour l'artisanat local africain
+- Équipe et savoir-faire traditionnel
+- Valeurs : authenticité, qualité, durabilité
+
+### Page Galerie :
+- Grid responsive d'images
+- Lightbox pour voir les images en grand
+- Catégories : Réalisations, Processus de création, Matières premières
+
+### Page Contact :
+- Formulaire de contact
+- Informations de localisation (à adapter selon votre pays)
+- Réseaux sociaux
+- Demande de devis en ligne
+
+## Style et design
+
+### Palette de couleurs inspirée de l'Afrique :
+- Couleurs terre : #8B4513, #CD853F, #D2691E
+- Couleurs accent : #FF8C00, #DAA520
+- Neutres : #F5F5DC, #2F4F4F, #FFFFFF
+
+### Typographie :
+- Police principale : moderne et lisible (Inter, Poppins ou similaire)
+- Police accent : plus caractéristique pour les titres
+
+### Éléments visuels :
+- Motifs géométriques africains subtils
+- Images placeholder de produits en terre cuite
+- Icônes modernes pour les services
+- Animations d'apparition au scroll
+
+## Fonctionnalités techniques
+
+### Interactivité :
+- Menu hamburger responsive
+- Carrousel d'images
+- Formulaire de contact fonctionnel
+- Boutons d'appel à l'action
+- Effet parallax subtil sur la hero section
+- Animations CSS3 (fade-in, slide-up)
+
+### SEO et performance :
+- Balises meta optimisées
+- Images optimisées avec alt text
+- Structure HTML sémantique
+- Vitesse de chargement optimisée
+
+### Responsive design :
+- Mobile-first approach
+- Breakpoints : mobile (320px+), tablet (768px+), desktop (1024px+)
+- Images adaptatives
+- Navigation mobile intuitive
+
+## Contenu textuel suggéré
+
+### Slogan principal :
+"L'Art Africain Authentique pour Vos Espaces Modernes"
+
+### Proposition de valeur :
+"Découvrez l'élégance intemporelle de nos créations artisanales en terre cuite, fabriquées avec passion par des artisans locaux africains."
+
+### Call-to-actions :
+- "Découvrir nos créations"
+- "Demander un devis gratuit"
+- "Voir la galerie"
+- "Contactez-nous"
+
+## Structure de fichiers demandée :
+```
+decola-africa/
+├── index.html
+├── products.html
+├── about.html
+├── gallery.html
+├── contact.html
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+├── images/
+│   └── [placeholder images]
+└── README.md
+```
+
+
+Génère un site web complet, professionnel et prêt à être personnalisé avec de vraies images et contenus.

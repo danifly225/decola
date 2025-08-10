@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decola Africa - Artisanat Africain en Terre Cuite</title>
+    <meta name="description" content="Découvrez l'élégance intemporelle de nos créations artisanales en terre cuite, fabriquées avec passion par des artisans locaux africains.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'inter': ['Inter', 'sans-serif'],
+                    'poppins': ['Poppins', 'sans-serif'],
+                },
+                colors: {
+                    'saddle': '#8B4513',
+                    'sandy': '#CD853F', 
+                    'chocolate': '#D2691E',
+                    'orange-accent': '#FF8C00',
+                    'gold-accent': '#DAA520',
+                    'beige': '#F5F5DC',
+                    'slate-gray': '#2F4F4F'
+                },
+                backgroundImage: {
+                    'african-pattern': `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23CD853F' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                }
+            }
+        }
+    };
+    </script>
+    
+    <style>
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .pattern-overlay {
+            position: relative;
+        }
+        
+        .pattern-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23CD853F' fill-opacity='0.1'%3E%3Cpolygon points='20,1 40,20 20,39 0,20'/%3E%3C/g%3E%3C/svg%3E") repeat;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-beige text-slate-gray">
+    <!-- Navigation -->
+    <!-- @COMPONENT: NavigationHeader [mobile-responsive with hamburger menu] -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="fas fa-vihara text-saddle text-2xl mr-2"></i>
+                    <span class="font-poppins font-bold text-xl text-saddle">DECOLA AFRICA</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#accueil" class="text-slate-gray hover:text-saddle px-3 py-2 text-sm font-medium transition-colors">Accueil</a>
+                        <a href="#produits" class="text-slate-gray hover:text-saddle px-3 py-2 text-sm font-medium transition-colors">Nos Produits</a>
+                        <a href="#apropos" class="text-slate-gray hover:text-saddle px-3 py-2 text-sm font-medium transition-colors">À Propos</a>
+                        <a href="#galerie" class="text-slate-gray hover:text-saddle px-3 py-2 text-sm font-medium transition-colors">Galerie</a>
+                        <a href="#contact" class="text-slate-gray hover:text-saddle px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                        <button class="bg-orange-accent text-white px-4 py-2 rounded-lg hover:bg-gold-accent transition-colors font-medium">
+                            Devis Gratuit
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-gray hover:text-saddle">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#accueil" class="block px-3 py-2 text-base font-medium text-slate-gray hover:text-saddle">Accueil</a>
+                    <a href="#produits" class="block px-3 py-2 text-base font-medium text-slate-gray hover:text-saddle">Nos Produits</a>
+                    <a href="#apropos" class="block px-3 py-2 text-base font-medium text-slate-gray hover:text-saddle">À Propos</a>
+                    <a href="#galerie" class="block px-3 py-2 text-base font-medium text-slate-gray hover:text-saddle">Galerie</a>
+                    <a href="#contact" class="block px-3 py-2 text-base font-medium text-slate-gray hover:text-saddle">Contact</a>
+                    <button class="w-full text-left bg-orange-accent text-white px-3 py-2 rounded-lg mt-2">Devis Gratuit</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: NavigationHeader -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [parallax background with call-to-action] -->
+    <section id="accueil" class="relative min-h-screen flex items-center justify-center pattern-overlay" style="background: linear-gradient(rgba(139, 69, 19, 0.7), rgba(139, 69, 19, 0.7)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080') center/cover fixed;">
+        <!-- Traditional African pottery and ceramic vessels displayed on wooden shelves -->
+        <div class="text-center text-white max-w-4xl mx-auto px-4 animate-fade-in-up">
+            <h1 class="font-poppins font-bold text-4xl md:text-6xl lg:text-7xl mb-6 text-shadow">
+                DECOLA AFRICA
+            </h1>
+            <p class="font-poppins text-xl md:text-2xl mb-4 text-shadow">
+                Artisanat Africain en Terre Cuite
+            </p>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-shadow">
+                L'Art Africain Authentique pour Vos Espaces Modernes
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-orange-accent hover:bg-gold-accent text-white px-8 py-3 rounded-lg font-semibold transition-colors hover-scale">
+                    <i class="fas fa-eye mr-2"></i>
+                    Découvrir nos créations
+                </button>
+                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-saddle px-8 py-3 rounded-lg font-semibold transition-colors hover-scale">
+                    <i class="fas fa-calculator mr-2"></i>
+                    Demander un devis gratuit
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- Specialties Section -->
+    <!-- @COMPONENT: SpecialtiesSection [three service cards with icons] -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-poppins font-bold text-3xl md:text-4xl text-saddle mb-4">Nos Spécialités</h2>
+                <p class="text-lg text-slate-gray max-w-2xl mx-auto">
+                    Découvrez l'élégance intemporelle de nos créations artisanales en terre cuite, fabriquées avec passion par des artisans locaux africains.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Claustras Card -->
+                <div class="text-center group hover-scale">
+                    <div class="bg-gradient-to-br from-sandy to-chocolate rounded-xl p-8 mb-6 shadow-lg">
+                        <i class="fas fa-border-all text-white text-4xl mb-4"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-white mb-2">Claustras Décoratifs</h3>
+                    </div>
+                    <p class="text-slate-gray">
+                        Séparateurs d'espace élégants en terre cuite, parfaits pour créer de l'intimité tout en laissant passer la lumière
+                    </p>
+                </div>
+                
+                <!-- Vasques Card -->
+                <div class="text-center group hover-scale">
+                    <div class="bg-gradient-to-br from-orange-accent to-gold-accent rounded-xl p-8 mb-6 shadow-lg">
+                        <i class="fas fa-shower text-white text-4xl mb-4"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-white mb-2">Vasques de Douche</h3>
+                    </div>
+                    <p class="text-slate-gray">
+                        Vasques artisanales uniques, alliant fonctionnalité et esthétique africaine authentique
+                    </p>
+                </div>
+                
+                <!-- Accessories Card -->
+                <div class="text-center group hover-scale">
+                    <div class="bg-gradient-to-br from-saddle to-sandy rounded-xl p-8 mb-6 shadow-lg">
+                        <i class="fas fa-shapes text-white text-4xl mb-4"></i>
+                        <h3 class="font-poppins font-semibold text-xl text-white mb-2">Accessoires Déco</h3>
+                    </div>
+                    <p class="text-slate-gray">
+                        Vases, pots, sculptures et objets décoratifs pour sublimer vos espaces
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SpecialtiesSection -->
+
+    <!-- Products Section -->
+    <!-- @COMPONENT: ProductsSection [product gallery with filters] -->
+    <section id="produits" class="py-16 bg-beige pattern-overlay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-poppins font-bold text-3xl md:text-4xl text-saddle mb-4">Nos Produits</h2>
+                <p class="text-lg text-slate-gray max-w-2xl mx-auto mb-8">
+                    Chaque pièce est unique, façonnée à la main selon des techniques ancestrales transmises de génération en génération.
+                </p>
+                
+                <!-- Product Filters -->
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button class="bg-saddle text-white px-6 py-2 rounded-full font-medium" data-filter="all">Tous</button>
+                    <button class="bg-white text-saddle hover:bg-sandy hover:text-white px-6 py-2 rounded-full font-medium transition-colors" data-filter="claustras">Claustras</button>
+                    <button class="bg-white text-saddle hover:bg-sandy hover:text-white px-6 py-2 rounded-full font-medium transition-colors" data-filter="vasques">Vasques</button>
+                    <button class="bg-white text-saddle hover:bg-sandy hover:text-white px-6 py-2 rounded-full font-medium transition-colors" data-filter="accessoires">Accessoires</button>
+                </div>
+            </div>
+            
+            <!-- Product Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale" data-category="claustras">
+                    <!-- Modern geometric terracotta screen partition with intricate patterns -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Claustra décoratif en terre cuite" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-saddle mb-2">Claustra Géométrique</h3>
+                        <p class="text-slate-gray mb-4">Design moderne avec motifs africains traditionnels</p>
+                        <button class="w-full bg-orange-accent text-white py-2 rounded-lg hover:bg-gold-accent transition-colors">
+                            <i class="fas fa-envelope mr-2"></i>Demander un devis
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale" data-category="vasques">
+                    <!-- Handcrafted ceramic bathroom basin with natural terracotta finish -->
+                    <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Vasque artisanale en terre cuite" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-saddle mb-2">Vasque Artisanale</h3>
+                        <p class="text-slate-gray mb-4">Forme unique sculptée à la main par nos artisans</p>
+                        <button class="w-full bg-orange-accent text-white py-2 rounded-lg hover:bg-gold-accent transition-colors">
+                            <i class="fas fa-envelope mr-2"></i>Demander un devis
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale" data-category="accessoires">
+                    <!-- Collection of decorative African pottery vases and vessels -->
+                    <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Collection d'accessoires décoratifs" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-saddle mb-2">Collection Décorative</h3>
+                        <p class="text-slate-gray mb-4">Vases et objets d'art pour votre intérieur</p>
+                        <button class="w-full bg-orange-accent text-white py-2 rounded-lg hover:bg-gold-accent transition-colors">
+                            <i class="fas fa-envelope mr-2"></i>Demander un devis
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale" data-category="claustras">
+                    <!-- Decorative clay brick wall pattern with traditional African motifs -->
+                    <img src="https://pixabay.com/get/gb36b6fa4aafb31284f30dfa7bbd0a7b33a7de18adc042c14fc6f31de7edf4d02c52ef037bcb1c562d8df52d8f38481ccc8369f42ec93a6ebf6bc51df77484fcd_1280.jpg" alt="Mur claustra traditionnel" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-saddle mb-2">Mur Claustra</h3>
+                        <p class="text-slate-gray mb-4">Installation complète pour espaces extérieurs</p>
+                        <button class="w-full bg-orange-accent text-white py-2 rounded-lg hover:bg-gold-accent transition-colors">
+                            <i class="fas fa-envelope mr-2"></i>Demander un devis
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale" data-category="vasques">
+                    <!-- Modern terracotta sink bowl with smooth natural finish -->
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Vasque moderne en terre cuite" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-saddle mb-2">Vasque Moderne</h3>
+                        <p class="text-slate-gray mb-4">Style contemporain avec finition naturelle</p>
+                        <button class="w-full bg-orange-accent text-white py-2 rounded-lg hover:bg-gold-accent transition-colors">
+                            <i class="fas fa-envelope mr-2"></i>Demander un devis
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-scale" data-category="accessoires">
+                    <!-- African artisan working on traditional pottery with clay -->
+                    <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Artisan façonnant la terre cuite" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-poppins font-semibold text-xl text-saddle mb-2">Pièces Sur Mesure</h3>
+                        <p class="text-slate-gray mb-4">Créations personnalisées selon vos désirs</p>
+                        <button class="w-full bg-orange-accent text-white py-2 rounded-lg hover:bg-gold-accent transition-colors">
+                            <i class="fas fa-envelope mr-2"></i>Demander un devis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProductsSection -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: AboutSection [company story and values] -->
+    <section id="apropos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-poppins font-bold text-3xl md:text-4xl text-saddle mb-6">Notre Histoire</h2>
+                    <p class="text-lg text-slate-gray mb-6">
+                        Decola Africa puise ses racines dans la riche tradition artisanale africaine. Depuis notre création, 
+                        nous nous engageons à préserver et valoriser le savoir-faire ancestral de nos artisans locaux.
+                    </p>
+                    <p class="text-lg text-slate-gray mb-6">
+                        Chaque création est le fruit d'un processus artisanal minutieux, utilisant des techniques 
+                        transmises de génération en génération. Nous sélectionnons avec soin nos matières premières 
+                        locales pour garantir l'authenticité et la qualité de nos produits.
+                    </p>
+                    
+                    <!-- Values -->
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-accent text-xl mr-3"></i>
+                            <span class="font-medium">Authenticité africaine garantie</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-accent text-xl mr-3"></i>
+                            <span class="font-medium">Qualité artisanale supérieure</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-accent text-xl mr-3"></i>
+                            <span class="font-medium">Durabilité et respect de l'environnement</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-orange-accent text-xl mr-3"></i>
+                            <span class="font-medium">Soutien aux artisans locaux</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- African potter shaping clay on traditional wheel -->
+                    <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400" alt="Artisan africain façonnant l'argile" class="rounded-xl shadow-lg w-full">
+                    
+                    <!-- Traditional African ceramic pots drying in the sun -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Poteries africaines séchant au soleil" class="rounded-xl shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutSection -->
+
+    <!-- Testimonials Section -->
+    <!-- @COMPONENT: TestimonialsSection [customer reviews carousel] -->
+    <section class="py-16 bg-gradient-to-r from-sandy to-chocolate pattern-overlay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-poppins font-bold text-3xl md:text-4xl text-white mb-4">Ce Que Disent Nos Clients</h2>
+                <p class="text-lg text-white opacity-90 max-w-2xl mx-auto">
+                    Découvrez les témoignages de nos clients satisfaits qui ont choisi l'excellence artisanale africaine.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                    </div>
+                    <p class="text-slate-gray mb-4">
+                        "Les claustras de Decola Africa ont complètement transformé notre terrasse. 
+                        La qualité artisanale est exceptionnelle et le design unique."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-sandy rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-saddle">Marie Dubois</p>
+                            <p class="text-sm text-slate-gray">Architecte d'intérieur</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                    </div>
+                    <p class="text-slate-gray mb-4">
+                        "Une vasque magnifique qui apporte une touche authentique à notre salle de bain. 
+                        Le travail artisanal est remarquable."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-sandy rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-saddle">Jean-Pierre Martin</p>
+                            <p class="text-sm text-slate-gray">Designer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                        <i class="fas fa-star text-gold-accent"></i>
+                    </div>
+                    <p class="text-slate-gray mb-4">
+                        "Service client exceptionnel et produits d'une qualité remarquable. 
+                        Je recommande vivement Decola Africa."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-sandy rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-saddle">Sophie Leroy</p>
+                            <p class="text-sm text-slate-gray">Propriétaire</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TestimonialsSection -->
+
+    <!-- Gallery Section -->
+    <!-- @COMPONENT: GallerySection [image grid with lightbox functionality] -->
+    <section id="galerie" class="py-16 bg-beige">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-poppins font-bold text-3xl md:text-4xl text-saddle mb-4">Notre Galerie</h2>
+                <p class="text-lg text-slate-gray max-w-2xl mx-auto">
+                    Explorez notre collection de créations artisanales et découvrez le processus de fabrication traditionnel.
+                </p>
+            </div>
+            
+            <!-- Gallery Categories -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button class="bg-saddle text-white px-6 py-2 rounded-full font-medium" data-gallery-filter="all">Toutes</button>
+                <button class="bg-white text-saddle hover:bg-sandy hover:text-white px-6 py-2 rounded-full font-medium transition-colors" data-gallery-filter="realisations">Réalisations</button>
+                <button class="bg-white text-saddle hover:bg-sandy hover:text-white px-6 py-2 rounded-full font-medium transition-colors" data-gallery-filter="processus">Processus</button>
+                <button class="bg-white text-saddle hover:bg-sandy hover:text-white px-6 py-2 rounded-full font-medium transition-colors" data-gallery-filter="matieres">Matières</button>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Gallery Item 1 -->
+                <div class="relative overflow-hidden rounded-lg hover-scale cursor-pointer" data-gallery-category="realisations">
+                    <!-- Beautiful terracotta decorative screen with geometric patterns -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Claustra géométrique terminé" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="relative overflow-hidden rounded-lg hover-scale cursor-pointer" data-gallery-category="processus">
+                    <!-- African artisan hands shaping wet clay on pottery wheel -->
+                    <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Façonnage de l'argile" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="relative overflow-hidden rounded-lg hover-scale cursor-pointer" data-gallery-category="matieres">
+                    <!-- Natural clay and earth materials used for terracotta pottery -->
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Argile naturelle" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="relative overflow-hidden rounded-lg hover-scale cursor-pointer" data-gallery-category="realisations">
+                    <!-- Elegant ceramic bathroom sink with natural finish -->
+                    <img src="https://images.unsplash.com/photo-1571068316344-75bc76f77890?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Vasque artisanale installée" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="relative overflow-hidden rounded-lg hover-scale cursor-pointer" data-gallery-category="processus">
+                    <!-- Traditional kiln firing pottery in African setting -->
+                    <img src="https://images.unsplash.com/photo-1594736797933-d0600501ba34?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Cuisson au four traditionnel" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="relative overflow-hidden rounded-lg hover-scale cursor-pointer" data-gallery-category="realisations">
+                    <!-- Collection of decorative African pottery and vases -->
+                    <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Collection d'accessoires" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 7 -->
+                <div class="relative overflow-hidden rounded-lg hover-scale cursor-pointer" data-gallery-category="matieres">
+                    <!-- Raw clay being prepared for pottery making -->
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" alt="Préparation de l'argile" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity"></i>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 8 -->
+                <div class="relative overflow-hidden rounded-lg hover-scale cursor-pointer" data-gallery-category="processus">
+                    <!-- Artist painting decorative patterns on terracotta -->
+                    <img src="https://pixabay.com/get/g37722d2ab4d434888186f140d315e48d8dc5863d338594e88fdc551c7def9df3de7ebbec091a0c3739f644cdbff0b28af79d4f4b7e46a63479651de416d66699_1280.jpg" alt="Application des motifs" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: GallerySection -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [contact form and information] -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-poppins font-bold text-3xl md:text-4xl text-saddle mb-4">Contactez-Nous</h2>
+                <p class="text-lg text-slate-gray max-w-2xl mx-auto">
+                    Prêt à découvrir nos créations ? Contactez-nous pour un devis personnalisé ou pour toute question.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-beige rounded-xl p-8">
+                    <h3 class="font-poppins font-semibold text-2xl text-saddle mb-6">Demande de Devis</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-slate-gray font-medium mb-2">Prénom</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-sandy focus:border-orange-accent focus:outline-none" placeholder="Votre prénom">
+                            </div>
+                            <div>
+                                <label class="block text-slate-gray font-medium mb-2">Nom</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-sandy focus:border-orange-accent focus:outline-none" placeholder="Votre nom">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-slate-gray font-medium mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-lg border border-sandy focus:border-orange-accent focus:outline-none" placeholder="votre@email.com">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-slate-gray font-medium mb-2">Téléphone</label>
+                            <input type="tel" class="w-full px-4 py-3 rounded-lg border border-sandy focus:border-orange-accent focus:outline-none" placeholder="Votre numéro">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-slate-gray font-medium mb-2">Type de produit</label>
+                            <select class="w-full px-4 py-3 rounded-lg border border-sandy focus:border-orange-accent focus:outline-none">
+                                <option>Choisissez une catégorie</option>
+                                <option>Claustras décoratifs</option>
+                                <option>Vasques de douche</option>
+                                <option>Accessoires déco</option>
+                                <option>Projet sur mesure</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-slate-gray font-medium mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-sandy focus:border-orange-accent focus:outline-none" placeholder="Décrivez votre projet..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-orange-accent text-white py-3 rounded-lg hover:bg-gold-accent transition-colors font-semibold">
+                            <i class="fas fa-paper-plane mr-2"></i>Envoyer ma demande
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="font-poppins font-semibold text-2xl text-saddle mb-6">Nos Informations</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-orange-accent text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-saddle">Adresse</h4>
+                                    <p class="text-slate-gray">123 Rue de l'Artisanat<br>Quartier Artisanal<br>Ville, Pays</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-phone text-orange-accent text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-saddle">Téléphone</h4>
+                                    <p class="text-slate-gray">+XX X XX XX XX XX</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-orange-accent text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-saddle">Email</h4>
+                                    <p class="text-slate-gray">contact@decolaafrica.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-orange-accent text-xl mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold text-saddle">Horaires</h4>
+                                    <p class="text-slate-gray">
+                                        Lun - Ven: 8h00 - 18h00<br>
+                                        Sam: 8h00 - 16h00<br>
+                                        Dim: Sur rendez-vous
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div>
+                        <h4 class="font-semibold text-saddle mb-4">Suivez-nous</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-orange-accent text-white rounded-full flex items-center justify-center hover:bg-gold-accent transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-orange-accent text-white rounded-full flex items-center justify-center hover:bg-gold-accent transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-orange-accent text-white rounded-full flex items-center justify-center hover:bg-gold-accent transition-colors">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-orange-accent text-white rounded-full flex items-center justify-center hover:bg-gold-accent transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action -->
+                    <div class="bg-gradient-to-r from-saddle to-chocolate rounded-xl p-6 text-white">
+                        <h4 class="font-poppins font-semibold text-xl mb-2">Projet Spécial ?</h4>
+                        <p class="mb-4">Nos artisans peuvent créer des pièces uniques selon vos spécifications.</p>
+                        <button class="bg-white text-saddle px-6 py-2 rounded-lg font-semibold hover:bg-beige transition-colors">
+                            Discutons de votre projet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [company information and links] -->
+    <footer class="bg-slate-gray text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-vihara text-orange-accent text-2xl mr-2"></i>
+                        <span class="font-poppins font-bold text-xl">DECOLA AFRICA</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        L'excellence artisanale africaine au service de vos espaces modernes.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-orange-accent transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-orange-accent transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-orange-accent transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-orange-accent transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="text-gray-300 hover:text-orange-accent transition-colors">Accueil</a></li>
+                        <li><a href="#produits" class="text-gray-300 hover:text-orange-accent transition-colors">Nos Produits</a></li>
+                        <li><a href="#apropos" class="text-gray-300 hover:text-orange-accent transition-colors">À Propos</a></li>
+                        <li><a href="#galerie" class="text-gray-300 hover:text-orange-accent transition-colors">Galerie</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-orange-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Products -->
+                <div>
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Nos Produits</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-orange-accent transition-colors">Claustras décoratifs</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-accent transition-colors">Vasques de douche</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-accent transition-colors">Accessoires déco</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-orange-accent transition-colors">Créations sur mesure</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-poppins font-semibold text-lg mb-4">Contact</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p><i class="fas fa-phone mr-2"></i> +XX X XX XX XX XX</p>
+                        <p><i class="fas fa-envelope mr-2"></i> contact@decolaafrica.com</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i> Quartier Artisanal<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ville, Pays</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Decola Africa. Tous droits réservés. | Artisanat africain authentique</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- Lightbox Modal (for gallery) -->
+    <!-- @COMPONENT: LightboxModal [image viewer popup] -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center">
+        <div class="relative max-w-4xl max-h-full p-4">
+            <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl hover:text-orange-accent">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="lightbox-image" src="" alt="" class="max-w-full max-h-full object-contain">
+        </div>
+    </div>
+    <!-- @END_COMPONENT: LightboxModal -->
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        (function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        })();
+
+        // Smooth scrolling for anchor links
+        (function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile menu if open
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        })();
+
+        // Product filters
+        (function() {
+            const filterButtons = document.querySelectorAll('[data-filter]');
+            const products = document.querySelectorAll('[data-category]');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-saddle', 'text-white');
+                        btn.classList.add('bg-white', 'text-saddle');
+                    });
+                    this.classList.add('bg-saddle', 'text-white');
+                    this.classList.remove('bg-white', 'text-saddle');
+                    
+                    // Filter products
+                    products.forEach(product => {
+                        const category = product.getAttribute('data-category');
+                        if (filter === 'all' || filter === category) {
+                            product.style.display = 'block';
+                        } else {
+                            product.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        })();
+
+        // Gallery filters
+        (function() {
+            const galleryFilterButtons = document.querySelectorAll('[data-gallery-filter]');
+            const galleryItems = document.querySelectorAll('[data-gallery-category]');
+            
+            galleryFilterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-gallery-filter');
+                    
+                    // Update active button
+                    galleryFilterButtons.forEach(btn => {
+                        btn.classList.remove('bg-saddle', 'text-white');
+                        btn.classList.add('bg-white', 'text-saddle');
+                    });
+                    this.classList.add('bg-saddle', 'text-white');
+                    this.classList.remove('bg-white', 'text-saddle');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        const category = item.getAttribute('data-gallery-category');
+                        if (filter === 'all' || filter === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        })();
+
+        // Lightbox functionality
+        (function() {
+            const galleryItems = document.querySelectorAll('[data-gallery-category] img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxClose = document.getElementById('lightbox-close');
+            
+            // Open lightbox
+            galleryItems.forEach(img => {
+                img.parentElement.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    const imgAlt = this.querySelector('img').alt;
+                    
+                    lightboxImage.src = imgSrc;
+                    lightboxImage.alt = imgAlt;
+                    lightbox.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close lightbox
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+            
+            if (lightboxClose) {
+                lightboxClose.addEventListener('click', closeLightbox);
+            }
+            
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // ESC key to close
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                    closeLightbox();
+                }
+            });
+        })();
+
+        // Form validation (basic)
+        (function() {
+            const form = document.querySelector('#contact form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Basic validation
+                    const requiredFields = this.querySelectorAll('input[required], select[required], textarea[required]');
+                    let isValid = true;
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.style.borderColor = '#EF4444';
+                        } else {
+                            field.style.borderColor = '#CD853F';
+                        }
+                    });
+                    
+                    if (isValid) {
+                        // TODO: Implement form submission logic
+                        alert('Merci pour votre demande ! Nous vous répondrons dans les plus brefs délais.');
+                        this.reset();
+                    } else {
+                        alert('Veuillez remplir tous les champs obligatoires.');
+                    }
+                });
+            }
+        })();
+
+        // Scroll animations
+        (function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections for scroll animations
+            const sections = document.querySelectorAll('section > div');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        })();
+    </script>
+</body>
+</html>

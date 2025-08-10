@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(42, 17%, 95%);
+  --foreground: hsl(185, 25%, 31%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(185, 25%, 31%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(185, 25%, 31%);
+  --primary: hsl(25, 100%, 50%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(24, 70%, 48%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(42, 17%, 95%);
+  --muted-foreground: hsl(185, 25%, 31%);
+  --accent: hsl(45, 48%, 76%);
+  --accent-foreground: hsl(25, 100%, 50%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(33, 29%, 78%);
+  --input: hsl(0, 0%, 100%);
+  --ring: hsl(25, 100%, 50%);
+  --chart-1: hsl(25, 100%, 50%);
+  --chart-2: hsl(42, 94%, 56%);
+  --chart-3: hsl(33, 29%, 78%);
+  --chart-4: hsl(24, 60%, 40%);
+  --chart-5: hsl(19, 70%, 31%);
+  --sidebar: hsl(0, 0%, 100%);
+  --sidebar-foreground: hsl(185, 25%, 31%);
+  --sidebar-primary: hsl(25, 100%, 50%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(45, 48%, 76%);
+  --sidebar-accent-foreground: hsl(25, 100%, 50%);
+  --sidebar-border: hsl(33, 29%, 78%);
+  --sidebar-ring: hsl(25, 100%, 50%);
+  --font-sans: Inter, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+  --saddle: hsl(19, 70%, 31%);
+  --sandy: hsl(33, 56%, 56%);
+  --chocolate: hsl(24, 70%, 48%);
+  --orange-accent: hsl(25, 100%, 50%);
+  --gold-accent: hsl(42, 94%, 56%);
+  --beige: hsl(42, 17%, 95%);
+  --slate-gray: hsl(185, 25%, 31%);
+}
+
+.dark {
+  --background: hsl(19, 70%, 8%);
+  --foreground: hsl(42, 17%, 90%);
+  --card: hsl(19, 70%, 12%);
+  --card-foreground: hsl(42, 17%, 90%);
+  --popover: hsl(19, 70%, 8%);
+  --popover-foreground: hsl(42, 17%, 90%);
+  --primary: hsl(25, 100%, 50%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(24, 70%, 48%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(19, 70%, 15%);
+  --muted-foreground: hsl(42, 17%, 70%);
+  --accent: hsl(19, 70%, 20%);
+  --accent-foreground: hsl(25, 100%, 50%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(19, 70%, 20%);
+  --input: hsl(19, 70%, 15%);
+  --ring: hsl(25, 100%, 50%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-saddle {
+    color: var(--saddle);
+  }
+
+  .bg-saddle {
+    background-color: var(--saddle);
+  }
+
+  .text-sandy {
+    color: var(--sandy);
+  }
+
+  .bg-sandy {
+    background-color: var(--sandy);
+  }
+
+  .text-chocolate {
+    color: var(--chocolate);
+  }
+
+  .bg-chocolate {
+    background-color: var(--chocolate);
+  }
+
+  .text-orange-accent {
+    color: var(--orange-accent);
+  }
+
+  .bg-orange-accent {
+    background-color: var(--orange-accent);
+  }
+
+  .text-gold-accent {
+    color: var(--gold-accent);
+  }
+
+  .bg-gold-accent {
+    background-color: var(--gold-accent);
+  }
+
+  .text-beige {
+    color: var(--beige);
+  }
+
+  .bg-beige {
+    background-color: var(--beige);
+  }
+
+  .text-slate-gray {
+    color: var(--slate-gray);
+  }
+
+  .bg-slate-gray {
+    background-color: var(--slate-gray);
+  }
+
+  .parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .pattern-overlay {
+    position: relative;
+  }
+
+  .pattern-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23CD853F' fill-opacity='0.1'%3E%3Cpolygon points='20,1 40,20 20,39 0,20'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    pointer-events: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
