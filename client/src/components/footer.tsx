@@ -64,7 +64,7 @@ export default function Footer() {
             <div className="space-y-2 text-gray-300">
               <p className="flex items-center"><Phone className="w-4 h-4 mr-2" /> +225 07 08 19 89 12</p>
               <p className="flex items-center"><Mail className="w-4 h-4 mr-2" /> support@decolaafrica.com</p>
-              <p className="flex items-start"><MapPin className="w-4 h-4 mr-2 mt-1" /> Quartier Artisanal<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bassam, Cote d'ivoire</p>
+              <p className="flex items-start"><MapPin className="w-4 h-4 mr-2 mt-1" /> Quartier Artisanal<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bassam, Côte d&apos;Ivoire</p>
             </div>
           </div>
         </div>
