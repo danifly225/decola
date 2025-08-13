@@ -63,14 +63,14 @@ export default function Footer() {
             <h4 className="font-poppins font-semibold text-lg mb-4">Contact</h4>
             <div className="space-y-2 text-gray-300">
               <p className="flex items-center"><Phone className="w-4 h-4 mr-2" /> +225 07 08 19 89 12</p>
-              <p className="flex items-center"><Mail className="w-4 h-4 mr-2" /> contact@decolaafrica.com</p>
-              <p className="flex items-start"><MapPin className="w-4 h-4 mr-2 mt-1" /> Quartier Artisanal<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ville, Pays</p>
+              <p className="flex items-center"><Mail className="w-4 h-4 mr-2" /> support@decolaafrica.com</p>
+              <p className="flex items-start"><MapPin className="w-4 h-4 mr-2 mt-1" /> Quartier Artisanal<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bassam, Cote d'ivoire</p>
             </div>
           </div>
         </div>
         
         <div className="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; 2024 Decola Africa. Tous droits réservés. | Artisanat africain authentique</p>
+          <p>&copy; 2025 Decola Africa. Tous droits réservés. | Artisanat africain authentique</p>
         </div>
       </div>
     </footer>
